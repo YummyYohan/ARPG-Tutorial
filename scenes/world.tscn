@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct72vqssphp2f"]
+[gd_scene load_steps=13 format=3 uid="uid://ct72vqssphp2f"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_2fxtb"]
 [ext_resource type="PackedScene" uid="uid://0rxq1ho8eyi1" path="res://Player/player.tscn" id="1_ir453"]
 [ext_resource type="Texture2D" uid="uid://3oiwwdio07ek" path="res://art/TilesetFloor.png" id="2_6q1lf"]
 [ext_resource type="Texture2D" uid="uid://d15ajs7atxl8e" path="res://art/TilesetNature.png" id="2_otuxl"]
 [ext_resource type="Texture2D" uid="uid://dtjlj7s5lqom8" path="res://art/animated flower.png" id="3_701tp"]
 [ext_resource type="Script" path="res://camera/follow cam.gd" id="5_36oi7"]
 [ext_resource type="PackedScene" uid="uid://danq53r17381a" path="res://enemies/slime.tscn" id="6_drk8u"]
+[ext_resource type="PackedScene" uid="uid://ckfrawgiwqk3k" path="res://gui/heartsContainer.tscn" id="7_360jq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5b0fh"]
 texture = ExtResource("2_6q1lf")
@@ -3166,7 +3168,8 @@ texture = ExtResource("3_701tp")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -0.375, 8, 8, -8, 8, -8, -0.25, -6.75, -2.875, 6.625, -2.875)
 
 [sub_resource type="TileSet" id="TileSet_2v051"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "sand 0"
 terrain_set_0/terrain_0/color = Color(0.584314, 0.211765, 0.52549, 1)
@@ -3179,6 +3182,7 @@ sources/1 = SubResource("TileSetAtlasSource_irahr")
 sources/2 = SubResource("TileSetAtlasSource_h3vc2")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_2fxtb")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -3211,3 +3215,7 @@ endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="TileMap/slime"]
 position = Vector2(-48, 10)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="heartsContainer" parent="CanvasLayer" instance=ExtResource("7_360jq")]
