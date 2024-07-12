@@ -12,3 +12,4 @@ func insert(item: inventoryItem):
 			items[i] = item
 			break 
 
+	updated.emit()
